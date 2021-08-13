@@ -21,8 +21,18 @@ class ThumbnailController extends Controller
         // YouTube video URL.
         $url = $request->url;
 
-        // YouTube video ID.
-        $videoID = substr($url, strpos($url, "?v=") + 3);
+        if (strlen($url) > 35) {
+
+            // YouTube video ID.
+            $videoID = substr($url, strpos($url, "?v=") + 3);
+        } else {
+
+            // YouTube video ID.
+            $videoID = substr($url, strpos($url, "be/") + 3);
+        }
+
+
+
 
         // Get video Thumbnail.
         $thumbnail = "https://img.youtube.com/vi/$videoID/maxresdefault.jpg";
